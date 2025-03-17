@@ -25,6 +25,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-screen">
+      <head>
+        <link rel="icon" href="/frederick-icon.ico" type="image/x-icon" />
+      </head>
       <body className={`${marcellus.variable} ${montserrat.variable} overflow-x-hidden`}>
         <CursorProvider>
           <Transition/>
