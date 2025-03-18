@@ -52,3 +52,14 @@
 .textarea {
   @apply outline-none ring-1 ring-accent/80 focus:ring-1 focus:ring-accent font-primary text-sm uppercase placeholder:text-primary text-primary;
 }
+
+/* Ocultar scrollbar en Chrome, Safari y Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ocultar scrollbar en IE, Edge y Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE y Edge */
+  scrollbar-width: none; /* Firefox */
+}
