@@ -27,7 +27,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-screen">
       <head>
-        <link rel="icon" href="/frederick-icon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/frederick-icon.ico" />
+        <link rel="apple-touch-icon" href="/frederick-icon.ico" />
+        <link rel="icon" href="/frederick-icon.ico" sizes="any" type="image/x-icon" />
       </head>
       <body className={`${marcellus.variable} ${montserrat.variable} overflow-x-hidden`}>
         <CursorProvider>

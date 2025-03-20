@@ -46,32 +46,38 @@ const Header = () => {
       {/* Top Bar: fondo fijo #CEA39C */}
       <div className="bg-[#CEA39C] xl:h-[50px] py-4 xl:py-0">
         <div className="container mx-auto h-full">
-          <div className="flex items-center justify-between h-full">
-            {/* Teléfono y correo al lado izquierdo */}
-            <motion.div
-              onMouseEnter={mouseEnterHandler}
-              onMouseLeave={mouseLeaveHandler}
-              className="flex items-center gap-6 text-white"
-            >
-              <div className="flex items-center gap-2 cursor-pointer" onClick={handlePhoneClick}>
+          <motion.div
+            onMouseEnter={mouseEnterHandler}
+            onMouseLeave={mouseLeaveHandler}
+            className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between xl:items-center text-white xl:pt-4" // Espaciado adicional en desktop con `xl:pt-4`
+          >
+            {/* Teléfono y Correo */}
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+              <div
+                className="flex items-center gap-2 cursor-pointer"
+                onClick={handlePhoneClick}
+              >
                 <FaPhoneAlt />
                 <span>+506 8449-3847</span>
               </div>
-              <div className="flex items-center gap-2 cursor-pointer" onClick={handleMailClick}>
+              <div
+                className="flex items-center gap-2 cursor-pointer"
+                onClick={handleMailClick}
+              >
                 <IoMdMail />
                 <span>frederickbs.cr@gmail.com</span>
               </div>
-            </motion.div>
+            </div>
 
-            {/* Redes sociales al lado derecho */}
+            {/* Redes sociales */}
             <motion.div
               onMouseEnter={mouseEnterHandler}
               onMouseLeave={mouseLeaveHandler}
-              className="hidden xl:flex gap-6 text-white"
+              className="hidden xl:flex gap-6 text-white items-center"
             >
               <Socials containerStyles="flex gap-6" />
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
