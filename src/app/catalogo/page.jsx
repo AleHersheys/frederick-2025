@@ -225,27 +225,20 @@ const ProductsData = [
   },
   {
     id: 32,
-    img: "Sleep care.PNG",
+    img: "SleeP.PNG",
     title: "Sleep Care",
     alt: "Sleep Care",
     category: "Brasieres",
   },
   {
     id: 33,
-    img: "SleeP.PNG",
-    title: "Sleep",
-    alt: "Sleep",
-    category: "Brasieres",
-  },
-  {
-    id: 34,
     img: "T- Sport Men.PNG",
     title: "T-Sport Men",
     alt: "T-Sport Men",
     category: "Caballeros",
   },
   {
-    id: 35,
+    id: 34,
     img: "Va Bien Plus.PNG",
     title: "Va Bien Plus",
     alt: "Va Bien Plus",
@@ -267,6 +260,8 @@ const page = () => {
     AOS.refresh();
   }, []);
 
+  const [selectedCategory, setSelectedCategory] = React.useState("Todos");
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -285,24 +280,44 @@ const page = () => {
             Revisa nuestro catálogo actualizado.
           </p>
         </div>
+        {/* Botones de filtrado centrados */}
+        <div className="container mx-auto flex flex-wrap justify-center gap-3 mb-10">
+          {["Todos", "Panties", "Bodies", "Brasieres", "Chalecos", "Maternales", "Caballeros"].map((category) => (
+            <button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            className={`text-sm w-[100px] px-3 py-1 border rounded text-center transition-all duration-200 ${
+              selectedCategory === category
+                ? "bg-accent text-white border-accent"
+                : "bg-secondary text-primary border-accent"
+            } hover:bg-primary hover:text-secondary hover:border-secondary`}
+          >
+            {category}
+          </button>                   
+          ))}
+        </div>
+        <div className="container mx-auto text-center mb-4">
+          <p className="text-lg">
+            Productos visibles: <strong>{ProductsData.filter((product) => selectedCategory === "Todos" ? true : product.category === selectedCategory).length}</strong>
+          </p>
+        </div>
         {/* Sección Body con las Cards */}
         <div className="container mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5">
-            {ProductsData.map((data) => (
+          {ProductsData.filter((product) => selectedCategory === "Todos" ? true : product.category === selectedCategory).map((data) => (
               <motion.div
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.05, transition: { duration: 0.05, ease: "linear" } }}
+                whileTap={{ scale: 0.95, transition: { duration: 0.05, ease: "linear" } }}                      
                 onMouseEnter={mouseEnterHandler}
                 onMouseLeave={mouseLeaveHandler}
                 key={data.id}
-                data-aos="fade-up"
-                data-aos-delay={data.id * 100}
+                data-aos=""
                 className="space-y-3 cursor-pointer"
               >
                 <img
                   src={data.img}
                   alt={data.alt}
-                  className="h-[220px] w-[150px] object-cover rounded-md"
+                  className="h-[220px] w-[150px] sm:h-[260px] sm:w-[180px] lg:h-[300px] lg:w-[200px] object-cover rounded-md card-border"
                 />
                 <div>
                   <h3 className="font-semibold">{data.title}</h3>

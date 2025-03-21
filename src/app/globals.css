@@ -63,3 +63,7 @@
   -ms-overflow-style: none; /* IE y Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+.card-border {
+  @apply border border-accent/40 rounded-lg shadow-md;
+}
