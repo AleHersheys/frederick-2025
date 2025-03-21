@@ -319,8 +319,8 @@ const page = () => {
                   alt={data.alt}
                   className="h-[220px] w-[150px] sm:h-[260px] sm:w-[180px] lg:h-[300px] lg:w-[200px] object-cover rounded-md card-border"
                 />
-                <div>
-                  <h3 className="font-semibold">{data.title}</h3>
+                <div className="h-[80px] flex flex-col justify-center items-center">
+                  <h3 className="font-semibold text-center break-words max-w-[150px]">{data.title}</h3>
                   <p className="text-sm">{data.category}</p>
                   <p className="text-sm">{data.price}</p>
                 </div>
