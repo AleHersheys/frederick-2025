@@ -137,7 +137,7 @@ const ProductsData = [
     img: "Chaleco Maxi Plus.PNG",
     title: "Chaleco Maxi Plus",
     alt: "Chaleco Maxi Plus",
-    category: "Chalecos",
+    category: "Chalecos/Cinturillas",
   },
   {
     id: 20,
@@ -158,35 +158,35 @@ const ProductsData = [
     img: "Europower Light.PNG",
     title: "Europower Light",
     alt: "Europower Light",
-    category: "Brasieres",
+    category: "Chalecos/Cinturillas",
   },
   {
     id: 23,
     img: "Fantasia Fit.PNG",
-    title: "Fantasia Fit",
+    title: "Fantasía Fit",
     alt: "Fantasia Fit",
-    category: "Bodies",
+    category: "Chalecos/Cinturillas",
   },
   {
     id: 24,
     img: "Fashion Fit cerrada.PNG",
     title: "Fashion Fit cerrada",
     alt: "Fashion Fit cerrada",
-    category: "Bodies",
+    category: "Chalecos/Cinturillas",
   },
   {
     id: 25,
     img: "Fashion Fit con Bicorchete.PNG",
     title: "Fashion Fit con Bicorchete",
     alt: "Fashion Fit con Bicorchete",
-    category: "Bodies",
+    category: "Chalecos/Cinturillas",
   },
   {
     id: 26,
     img: "Manguitas.PNG",
     title: "Manguitas",
     alt: "Manguitas",
-    category: "Bodies",
+    category: "Chalecos/Cinturillas",
   },
   {
     id: 27,
@@ -282,11 +282,11 @@ const page = () => {
         </div>
         {/* Botones de filtrado centrados */}
         <div className="container mx-auto flex flex-wrap justify-center gap-3 mb-10">
-          {["Todos", "Panties", "Bodies", "Brasieres", "Chalecos", "Maternales", "Caballeros"].map((category) => (
+          {["Bodies", "Brasieres", "Caballeros", "Chalecos/Cinturillas", "Maternales", "Panties", "Todos", ].map((category) => (
             <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`text-sm w-[100px] px-3 py-1 border rounded text-center transition-all duration-200 ${
+            className={`text-sm w-[160px] px-3 py-1 border rounded text-center transition-all duration-200 ${
               selectedCategory === category
                 ? "bg-accent text-white border-accent"
                 : "bg-secondary text-primary border-accent"
@@ -298,7 +298,7 @@ const page = () => {
         </div>
         <div className="container mx-auto text-center mb-4">
           <p className="text-lg">
-            Productos visibles: <strong>{ProductsData.filter((product) => selectedCategory === "Todos" ? true : product.category === selectedCategory).length}</strong>
+            Productos disponibles: <strong>{ProductsData.filter((product) => selectedCategory === "Todos" ? true : product.category === selectedCategory).length}</strong>
           </p>
         </div>
         {/* Sección Body con las Cards */}
