@@ -31,18 +31,15 @@ const Form = () => {
     } else if (name === 'telefono') {
       const input = e.target;
       const cursorPosition = input.selectionStart;
-      
-      // Manejo del prefijo inmutable
+
       let userInput = value;
       if (!userInput.startsWith(telefonoPrefix)) {
         userInput = telefonoPrefix;
       }
 
-      // Extraer solo los números después del prefijo
       const editablePart = userInput.substring(telefonoPrefix.length);
       const digits = editablePart.replace(/[^0-9]/g, '').slice(0, 8);
-      
-      // Formatear con guión automático
+
       let formatted = digits;
       if (digits.length > 4) {
         formatted = `${digits.slice(0, 4)}-${digits.slice(4, 8)}`;
@@ -55,20 +52,16 @@ const Form = () => {
         [name]: newValue
       });
 
-      // Manejo de posición del cursor
       setTimeout(() => {
         if (telefonoRef.current) {
           let newCursorPos = cursorPosition;
-          
-          // Mantener cursor en área editable
+
           newCursorPos = Math.max(telefonoPrefix.length, newCursorPos);
-          
-          // Ajustar posición después del guión
+
           if (digits.length > 4 && cursorPosition > telefonoPrefix.length + 4) {
             newCursorPos += 1;
           }
-          
-          // Limitar posición máxima
+
           newCursorPos = Math.min(newCursorPos, newValue.length);
 
           telefonoRef.current.setSelectionRange(newCursorPos, newCursorPos);
@@ -115,7 +108,7 @@ const Form = () => {
         }
         break;
       case 'correo':
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+        if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
           newErrors.correo = 'Por favor, introduce un correo electrónico válido.';
         } else {
           delete newErrors.correo;
@@ -142,16 +135,16 @@ const Form = () => {
     setErrors(newErrors);
   };
 
-  const formRef = useRef(null); // Define la referencia para el formulario
+  const formRef = useRef(null);
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     if (isFormValid()) {
       emailjs.sendForm(
-        'service_0fbnpiw', // Tu Service ID
-        'template_ow8z5pk', // Tu Template ID
-        formRef.current,   // Referencia al formulario
-        'QXk0whw6tPuUAbM7y'  // Tu Public Key
+        'service_0fbnpiw',
+        'template_ow8z5pk',
+        formRef.current,
+        'QXk0whw6tPuUAbM7y'
       )
       .then(() => {
         alert('Formulario enviado correctamente');
@@ -167,18 +160,17 @@ const Form = () => {
       .catch((error) => {
         console.error('Error al enviar el formulario:', error.text || error);
         alert('Hubo un error al enviar el formulario. Verifica la configuración.');
-      });      
+      });
     } else {
       alert('Por favor, corrige los errores antes de enviar el formulario.');
     }
-  };  
+  };
 
   const isFormValid = () => {
-    return Object.keys(errors).length === 0 && 
-           formData.nombre && 
-           formData.telefono && 
-           formData.correo && 
-           formData.asunto && 
+    return Object.keys(errors).length === 0 &&
+           formData.nombre &&
+           formData.telefono &&
+           formData.asunto &&
            formData.mensaje;
   };
 
@@ -203,7 +195,7 @@ const Form = () => {
         name="telefono" 
         value={formData.telefono} 
         onChange={handleChange} 
-        maxLength={14} // +506 (5) + XXXX-XXXX (9) = 14 caracteres
+        maxLength={14}
       />
       {errors.telefono && <span className="text-red-500">{errors.telefono}</span>}
 
