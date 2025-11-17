@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { CursorContext } from '@/components/CursorContext';
-import aboutImg from "@/assets/aboutImg.png";
+import aboutImg from "@/assets/aboutImg.webp";
 import StatsItem from '@/components/StatsItem';
 
 const page = () => {

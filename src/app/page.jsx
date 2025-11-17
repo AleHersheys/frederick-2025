@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { delay, motion } from 'framer-motion';
 import { CursorContext } from '@/components/CursorContext';
 import Image from 'next/image';
-import homeImg from "@/assets/homeImg.png";
+import homeImg from "@/assets/homeImg.webp";
 import { FaStore } from "react-icons/fa";
 import Link from 'next/link';
 

@@ -46,16 +46,16 @@ const Header = () => {
       {/* Top Bar: fondo fijo #CEA39C */}
       <div className="bg-[#CEA39C] xl:h-[50px] py-4 xl:py-0">
         <div className="container mx-auto h-full">
-          <motion.div
-            onMouseEnter={mouseEnterHandler}
-            onMouseLeave={mouseLeaveHandler}
-            className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between xl:items-center text-white xl:pt-4" // Espaciado adicional en desktop con `xl:pt-4`
+          <div
+            className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between xl:items-center text-white xl:pt-4"
           >
             {/* Teléfono y Correo */}
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
               <div
                 className="flex items-center gap-2 cursor-pointer"
                 onClick={handlePhoneClick}
+                onMouseEnter={mouseEnterHandler}
+                onMouseLeave={mouseLeaveHandler}
               >
                 <FaPhoneAlt />
                 <span>+506 8449-3847</span>
@@ -63,6 +63,8 @@ const Header = () => {
               <div
                 className="flex items-center gap-2 cursor-pointer"
                 onClick={handleMailClick}
+                onMouseEnter={mouseEnterHandler}
+                onMouseLeave={mouseLeaveHandler}
               >
                 <IoMdMail />
                 <span>frederickbs.cr@gmail.com</span>
@@ -77,7 +79,7 @@ const Header = () => {
             >
               <Socials containerStyles="flex gap-6" />
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
@@ -85,7 +87,10 @@ const Header = () => {
       <div
         className={`${lowerBg} ${lowerBarClass} container mx-auto flex items-center justify-between px-6 xl:py-4`}
       >
-        <motion.div onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler}>
+        <motion.div
+          onMouseEnter={mouseEnterHandler}
+          onMouseLeave={mouseLeaveHandler}
+        >
           <Link href={"/"}>
             <Image src={Logo} width={120} height={44} priority alt="Frederick Logo" />
           </Link>
