@@ -49,7 +49,7 @@ const page = () => {
                 <StatsItem countNum={30} countText={"+"} text={"años en el mercado costarricense."}/>
               </div>
               <div>
-                <StatsItem countNum={35} countText={"k+"} text={"clientes satisfechos."}/>
+                <StatsItem countNum={40} countText={"k+"} text={"clientes satisfechos."}/>
               </div>
               <div>
                 <StatsItem countNum={100} countText={"%"} text={"productos de gran calidad."}/>
